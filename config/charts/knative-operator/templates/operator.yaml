@@ -48,7 +48,7 @@ metadata:
     app.kubernetes.io/component: operator-webhook
     app.kubernetes.io/version: "{{ .Chart.Version }}"
     app.kubernetes.io/name: knative-operator
-{{- if and .Values.knative_operator.operator_webhook.annotations }}
+{{- if .Values.knative_operator.operator_webhook.annotations }}
   annotations:
 {{ toYaml .Values.knative_operator.operator_webhook.annotations | indent 4 }}
 {{- end }}
@@ -66,7 +66,7 @@ spec:
         app.kubernetes.io/version: "{{ .Chart.Version }}"
         app.kubernetes.io/name: knative-operator
         sidecar.istio.io/inject: "false"
-{{- if and .Values.knative_operator.operator_webhook.podAnnotations }}
+{{- if .Values.knative_operator.operator_webhook.podAnnotations }}
       annotations:
 {{ toYaml .Values.knative_operator.operator_webhook.podAnnotations | indent 8 }}
 {{- end }}
@@ -75,7 +75,7 @@ spec:
       affinity:
 {{ toYaml .Values.knative_operator.operator_webhook.affinity | indent 8 }}
 {{- end }}
-{{- if and .Values.knative_operator.operator_webhook.securityContext }}
+{{- if .Values.knative_operator.operator_webhook.securityContext }}
       securityContext:
 {{ toYaml .Values.knative_operator.operator_webhook.securityContext | indent 8 }}
 {{- end }}
@@ -6330,7 +6330,7 @@ metadata:
   labels:
     app.kubernetes.io/name: knative-operator
     app.kubernetes.io/version: "{{ .Chart.Version }}"
-{{- if and .Values.knative_operator.knative_operator.annotations }}
+{{- if .Values.knative_operator.knative_operator.annotations }}
   annotations:
 {{ toYaml .Values.knative_operator.knative_operator.annotations | indent 4 }}
 {{- end }}
@@ -6346,7 +6346,7 @@ spec:
         app.kubernetes.io/name: knative-operator
         app.kubernetes.io/version: "{{ .Chart.Version }}"
         sidecar.istio.io/inject: "false"
-{{- if and .Values.knative_operator.knative_operator.podAnnotations }}
+{{- if .Values.knative_operator.knative_operator.podAnnotations }}
       annotations:
 {{ toYaml .Values.knative_operator.knative_operator.podAnnotations | indent 8 }}
 {{- end }}
@@ -6356,7 +6356,7 @@ spec:
 {{ toYaml .Values.knative_operator.knative_operator.affinity | indent 8 }}
 {{- end }}
       serviceAccountName: knative-operator
-{{- if and .Values.knative_operator.knative_operator.securityContext }}
+{{- if .Values.knative_operator.knative_operator.securityContext }}
       securityContext:
 {{ toYaml .Values.knative_operator.knative_operator.securityContext | indent 8 }}
 {{- end }}
